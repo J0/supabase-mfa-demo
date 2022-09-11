@@ -1,10 +1,16 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { useState } from 'react'
+import {supabase} from 'lib/Store'
 
 export default function Home() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  supabase.auth.onStateChange((event, session)=> {
+    if (event == 'SIGNED_IN') {
+      console.log('SIGNED_IN', session)
+    }
+  })
   const handleLogin = async (type, username, password) => {
     try {
       const { error, data: { user } } =
