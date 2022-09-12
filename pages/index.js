@@ -1,22 +1,28 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { useState } from 'react'
-import {supabase} from 'lib/Store'
+import {auth} from '../lib/Store'
+import { useRouter } from 'next/router'
+
+
 
 export default function Home() {
+  const router = useRouter()
+
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  supabase.auth.onStateChange((event, session)=> {
+  auth.onAuthStateChange((event, session)=> {
     if (event == 'SIGNED_IN') {
-      console.log('SIGNED_IN', session)
+      console.log('SIGNED_IN now', session)
+      router.push('/mfa')
     }
   })
   const handleLogin = async (type, username, password) => {
     try {
       const { error, data: { user } } =
         type === 'LOGIN'
-          ? await supabase.auth.signIn({ email: username, password })
-          : await supabase.auth.signUp({ email: username, password })
+          ? await auth.signInWithPassword({ email: username, password })
+          : await auth.signUp({ email: username, password })
       // If the user doesn't exist here and an error hasn't been raised yet,
       // that must mean that a confirmation email has been sent.
       // NOTE: Confirming your email address is required by default.
