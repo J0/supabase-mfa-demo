@@ -1,10 +1,10 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {auth} from '../lib/Store'
 import { useRouter } from 'next/router'
 
-
+// Use Effect hook here calling enroll
 
 export default function Home() {
   const router = useRouter()
@@ -38,6 +38,7 @@ export default function Home() {
   return (
     <div className="w-full h-full flex justify-center items-center p-4 bg-gray-300">
       <div>An MFA page</div>
+      <div>Specific text here</div>
     </div>
   )
 }

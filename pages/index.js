@@ -14,8 +14,9 @@ export default function Home() {
   auth.onAuthStateChange((event, session)=> {
     if (event == 'SIGNED_IN') {
       console.log('SIGNED_IN now', session)
-      router.push('/mfa')
+      router.push('/enroll')
     }
+    // There needs to be a separate path handling verify
   })
   const handleLogin = async (type, username, password) => {
     try {
