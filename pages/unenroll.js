@@ -34,14 +34,14 @@ export default function Unenroll() {
   return (
     <div className="w-full h-full flex justify-center items-center p-4 bg-gray-300">
 
-    <div className="p-4 w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+    <div className="p-4 w-full max-w-md bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
 
 
     <form className="space-y-4" action="#">
         <h3 className="text-xl font-medium text-gray-900 dark:text-white">Unenroll Factor</h3>
         <h4><b>Factor Details</b></h4>
-      <div className="outline-black outline-2">
-        <table>
+      <div className="">
+        <table className="border border-slate-500">
           <tbody>
     <tr>
     <th>Friendly Name</th>
@@ -52,9 +52,9 @@ export default function Unenroll() {
     </tr>
       {factors.map((factor, index) => (
        <tr key={index}>
-         <td> {factor.friendly_name ?? "None"}</td>
-         <td> {factor.id} </td>
-         <td> {factor.factor_type}</td>
+         <td className="border border-slate-700"> {factor.friendly_name ?? "None"}</td>
+         <td className="border border-slate-700"> {factor.id} </td>
+         <td className="border border-slate-700"> {factor.factor_type}</td>
         <td> {factor.status}</td>
        </tr>))}
 
