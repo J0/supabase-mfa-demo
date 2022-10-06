@@ -5,24 +5,7 @@ import {auth} from '../lib/Store'
 import { useRouter } from 'next/router'
 
 
-// export async function getServerSideProps() {
-//   console.log(auth)
-//   const response = await auth.getUser()
 
-//   const { user } = response;
-
-// //  // If the `getUser` endpoint doesn't have a user in its response
-// //  // then we will redirect to the login page
-// //  // which means this page will only be viewable when `getUser` returns a user.
-
-// //   if (!user) {
-// //     return {
-// //       redirect: { destination: "/", permanent: false },
-// //     };
-// //   }
-// //   // We'll pass the returned `user` to the page's React Component as a prop
-//    return { props: { user } };
-//  }
 
 
 export default function Enroll() {

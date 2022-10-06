@@ -10,15 +10,22 @@ export default function Unenroll() {
   const [totpCode, setTotpCode] = useState('')
   const [factors, setFactors] = useState([]);
   const [loading, setLoading] = useState(false)
+  const [aal, setAAL] = useState('')
   const listFactors = async () => {
       const {data: factors} = await auth.mfa.listFactors()
     setFactors(factors.factors)
 
 
   }
+  const checkLoggedIn = async () => {
+    const {data: {AAL: aal}} = await auth.mfa.getAAL()
+    console.log(aal)
+    setAAL(aal)
+  }
 
   useEffect(() => {
     listFactors().catch(console.error)
+    checkLoggedIn().catch(console.error)
 
   },[])
 
